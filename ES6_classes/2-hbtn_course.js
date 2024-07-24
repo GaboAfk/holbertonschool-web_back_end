@@ -3,13 +3,20 @@
 export default class HolbertonCourse {
   // constructor(name = String, length = Number, students = Array(String)) {
   constructor(name = '', length = 0, students = []) {
-    this._name = name;
+    this._name = this._validateName(name);
     this._length = length;
     this._students = students;
   }
 
   get name() {
     return this._name;
+  }
+
+  _validateName(newname) {
+    if (typeof newname !== 'string') {
+      throw new TypeError('Name must be a string');
+    }
+    return newname;
   }
 
   set name(newname) {
