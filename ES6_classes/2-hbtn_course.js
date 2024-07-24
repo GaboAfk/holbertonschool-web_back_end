@@ -3,7 +3,7 @@
 
 export default class HolbertonCourse {
   // constructor(name = String, length = Number, students = Array(String)) {
-  constructor(name = '', length = 0, students = []) {
+  constructor(name, length, students) {
     this._name = this._validateName(name);
     this._length = this._validateLength(length);
     this._students = this._validateStudents(students);
@@ -53,7 +53,7 @@ export default class HolbertonCourse {
       throw new TypeError('Length must be a number');
     }
       */
-    this._length = newlength;
+    this._length = this._validateLength(newlength);
   }
 
   get students() {
