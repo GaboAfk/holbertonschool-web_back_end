@@ -1,4 +1,5 @@
 /* eslint-disable class-methods-use-this */
+/* eslint-disable no-underscore-dangle */
 
 export default class Currency {
   constructor(code, name) {
