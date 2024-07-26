@@ -1,3 +1,5 @@
+/* eslint-disable class-methods-use-this */
+
 export default class Building {
   constructor(sqft) {
     if (this.constructor !== Building
