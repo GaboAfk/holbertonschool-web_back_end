@@ -27,12 +27,12 @@ export default class Pricing {
     return this._amount;
   }
 
-  get currency() {
-    return this._currency;
-  }
-
   set amount(newamount) {
     this._amount = this._validatorAmount(newamount);
+  }
+
+  get currency() {
+    return this._currency;
   }
 
   set currency(newcurrency) {
