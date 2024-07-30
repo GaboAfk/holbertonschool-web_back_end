@@ -5,10 +5,14 @@ export default async function handleProfileSignup(firstName, lastName, fileName)
   const totalRes = await Promise
     .allSettled([signUpUser(firstName, lastName), uploadPhoto(fileName)]);
   return (
-    totalRes.forEach((singleRes) => ({
-      status: singleRes.status,
-      value: singleRes.status === 'fulfilled' ? singleRes.value : String(singleRes.reason),
-    }))
+    totalRes.forEach((singleRes) => (
+      // console.log(
+      {
+        status: singleRes.status,
+        value: singleRes.status === 'fulfilled' ? singleRes.value : String(singleRes.reason),
+      }
+    //  )
+    ))
   );
 }
 
