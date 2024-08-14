@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
-from typing import List
 """sum_list module"""
 
 
+from typing import List
+
+
 def sum_list(input_list: List[float]) -> float:
-    """sum a float list
+    """
+    calculates the sum a float list
 
     Args:
         input_list (List[float]): float list
