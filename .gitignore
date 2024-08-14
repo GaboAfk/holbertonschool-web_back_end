@@ -7,3 +7,5 @@ package-lock.json
 package.json
 node_modules
 *main.js
+*main.py
+*.pyc
