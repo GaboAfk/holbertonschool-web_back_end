@@ -12,3 +12,7 @@ def floor(n: float) -> int:
         int: n truncated floor
     """
     return int(n)
+
+"""
+it will be better importing math.floor it really give a floor number
+"""
