@@ -2,18 +2,18 @@
 """async generator module"""
 
 
-from typing import AsyncGenerator
+from typing import Generator
 import asyncio
 import random
 
 
-async def async_generator() -> AsyncGenerator[float, None]:
+async def async_generator() -> Generator[float, None, None]:
     """Generates 10 random floats numbers between 0 and 10 asynchronously.
 
     Iterating 10 times and waiting for 1 sec before yielding a random number
 
     Returns:
-        AsyncGenerator[float, None]: an asynchronous generator that
+        Generator[float, None, None]: an asynchronous generator that
         yields float values
 
     Yields:
