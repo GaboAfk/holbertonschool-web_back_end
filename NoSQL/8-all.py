@@ -11,8 +11,4 @@ def list_all(mongo_collection):
     Returns:
         Cursor: cursor obj with documents or a empty list if dont find any
     """
-    if mongo_collection.count_documents({}) == 0:
-        return []
-    res = mongo_collection.find({})
-
-    return res
+    return mongo_collection.find({})
