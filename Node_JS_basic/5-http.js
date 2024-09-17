@@ -1,6 +1,39 @@
 const http = require('http');
 const url = require('url');
-const countStudents = require('./3-read_file_async');
+const fs = require('fs').promises;
+
+async function countStudents(path) {
+  try {
+    const data = await fs.readFile(path, 'utf-8');
+    const rows = data.split('\n').filter((row) => row.trim() !== '');
+
+    const students = rows.slice(1);
+
+    let result = `Number of students: ${students.length}\n`;
+    console.log(`Number of students: ${students.length}`);
+
+    const fields = {};
+
+    for (const student of students) {
+      const records = student.split(',');
+      const field = records[records.length - 1].trim();
+      const firstname = records[0].trim();
+
+      if (!fields[field]) {
+        fields[field] = [];
+      }
+      fields[field].push(firstname);
+    }
+
+    for (const [field, list] of Object.entries(fields)) {
+      console.log(`Number of students in ${field}: ${fields[field].length}. List: ${list.join(', ')}`);
+      result += `Number of students in ${field}: ${fields[field].length}. List: ${list.join(', ')}\n`;
+    }
+    return result.trim();
+  } catch (error) {
+    throw new Error('Cannot load the database');
+  }
+}
 
 const port = 1245;
 
@@ -19,6 +52,7 @@ const app = http.createServer(async (req, res) => {
       res.end('Error: No database file provided');
     } else {
       res.writeHead(200, { 'Content-Type': 'text/plain' });
+      res.write('This is the list of our students\n');
       try {
         const result = await countStudents(databaseFile);
         res.end(result);
