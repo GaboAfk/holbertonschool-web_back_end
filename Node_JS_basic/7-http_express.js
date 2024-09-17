@@ -53,7 +53,7 @@ app.get('/students', async (req, res) => {
     const result = await countStudents(databaseFile);
     res.end(result);
   } catch (error) {
-    res.status(404).send('Cannot load the database');
+    res.status(404);
   }
 });
 
