@@ -44,16 +44,18 @@ app.get('/', (_, res) => {
 app.get('/students', async (req, res) => {
   const databaseFile = process.argv[2];
 
-  /* if (!databaseFile) {
-    res.status(200).send('Error: No database file provided');
-  } */
+  if (!databaseFile) {
+    res.status(404).send('Error: No database file provided');
+  }
 
+  res.write('This is the list of our students\n');
   try {
-    res.write('This is the list of our students\n');
     const result = await countStudents(databaseFile);
     res.end(result);
   } catch (error) {
-    res.status(404);
+    if (!res.headersSent) {
+      res.status(404).send('Cannot load the database');
+    }
   }
 });
 
