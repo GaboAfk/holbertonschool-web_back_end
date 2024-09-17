@@ -48,8 +48,8 @@ app.get('/students', async (req, res) => {
     res.status(200).send('Error: No database file provided');
   } */
 
-  res.write('This is the list of our students\n');
   try {
+    res.write('This is the list of our students\n');
     const result = await countStudents(databaseFile);
     res.end(result);
   } catch (error) {
