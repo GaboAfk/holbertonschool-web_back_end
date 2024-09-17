@@ -4,8 +4,13 @@ const countStudents = (path) => {
   try {
     const data = fs.readFileSync(path, 'utf-8');
     const rows = data.split('\n');
+
+    console.log(rows);
+
     const students = rows.slice(1);
     console.log(`Number of students: ${students.length}`);
+
+    console.log(students);
 
     const fields = {};
 
@@ -13,11 +18,11 @@ const countStudents = (path) => {
       const records = student.split(',');
       /* console.log(records); */
       const field = records[records.length - 1];
-      const name = records[0];
-      if (!Object.keys(fields).includes(field)) {
+      const firstname = records[0];
+      if (!fields[field]) {
         fields[field] = [];
       }
-      fields[field].push(name);
+      fields[field].push(firstname);
     }
     /* console.log(fields); */
 
@@ -31,6 +36,6 @@ const countStudents = (path) => {
 
 module.exports = countStudents;
 
-/* const file = './database.csv';
+const file = './database.csv';
 
-countStudents(file); */
+countStudents(file);
