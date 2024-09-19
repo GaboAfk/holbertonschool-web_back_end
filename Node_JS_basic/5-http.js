@@ -44,21 +44,25 @@ const app = http.createServer(async (req, res) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
     res.end('Hello Holberton School!');
-  } else if (parsedUrl.pathname === '/students') {
+    return;
+  }
+
+  if (parsedUrl.pathname === '/students') {
     const databaseFile = process.argv[2];
 
     if (!databaseFile) {
       res.writeHead(500, { 'Content-Type': 'text/plain' });
       res.end('Error: No database file provided');
-    } else {
+      return;
+    }
+
+    try {
+      const result = await countStudents(databaseFile);
       res.writeHead(200, { 'Content-Type': 'text/plain' });
-      res.write('This is the list of our students\n');
-      try {
-        const result = await countStudents(databaseFile);
-        res.end(result);
-      } catch (error) {
-        res.end('Cannot load the database');
-      }
+      res.end(`This is the list of our students\n${result}`);
+    } catch (error) {
+      res.writeHead(500, { 'Content-Type': 'text/plain' });
+      res.end('Cannot load the database');
     }
   }
 });
