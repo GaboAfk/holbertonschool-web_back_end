@@ -53,11 +53,11 @@ const app = http.createServer(async (req, res) => {
       res.end('Error: No database file provided');
       return;
     }
+    res.write('This is the list of our students\n');
     try {
       const result = await countStudents(databaseFile);
       res.statusCode = 200;
       res.setHeader('Content-Type', 'text/plain');
-      res.write('This is the list of our students\n');
       res.end(result);
     } catch (error) {
       res.statusCode = 500;
