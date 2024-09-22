@@ -62,7 +62,7 @@ const app = http.createServer(async (req, res) => {
     } catch (error) {
       res.statusCode = 500;
       res.setHeader('Content-Type', 'text/plain');
-      res.end('Cannot load the database');
+      res.end('This is the list of our students\nCannot load the database');
     }
   }
 });
