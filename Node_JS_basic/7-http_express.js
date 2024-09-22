@@ -49,12 +49,12 @@ app.get('/students', async (req, res) => {
     return;
   }
 
-  res.write('This is the list of our students\n');
   try {
     const result = await countStudents(databaseFile);
+    res.write('This is the list of our students\n');
     res.end(result);
   } catch (error) {
-    res.status(404).send('Cannot load the database');
+    res.status(404).send('This is the list of our students\nCannot load the database');
   }
 });
 
