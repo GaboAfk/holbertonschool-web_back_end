@@ -16,7 +16,7 @@ class StudentsController {
         responseText += `Number of students in ${field}: ${data[field].length}. List: ${data[field].join(', ')}\n`;
       });
       /* console.log(responseText); */
-      response.status(200).send(responseText);
+      response.status(200).send(responseText.trim());
     } catch (error) {
       response.status(500).send('Cannot load the database');
     }
