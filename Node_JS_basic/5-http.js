@@ -50,7 +50,7 @@ const app = http.createServer(async (req, res) => {
     if (!databaseFile) {
       res.statusCode = 500;
       res.setHeader('Content-Type', 'text/plain');
-      res.end('Error: No database file provided');
+      res.end('This is the list of our students\nError: No database file provided');
       return;
     }
     try {
@@ -62,7 +62,7 @@ const app = http.createServer(async (req, res) => {
     } catch (error) {
       res.statusCode = 500;
       res.setHeader('Content-Type', 'text/plain');
-      res.end('Cannot load the database');
+      res.end('This is the list of our students\nCannot load the database');
     }
   }
 });
