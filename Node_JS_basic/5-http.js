@@ -50,7 +50,7 @@ const app = http.createServer(async (req, res) => {
     if (!databaseFile) {
       res.statusCode = 500;
       res.setHeader('Content-Type', 'text/plain');
-      res.end('This is the list of our students\nError: No database file provided');
+      res.end('Error: No database file provided');
       return;
     }
     try {
