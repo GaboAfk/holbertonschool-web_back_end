@@ -55,8 +55,8 @@ const app = http.createServer(async (req, res) => {
     }
     try {
       const result = await countStudents(databaseFile);
-      res.statusCode = 200;
       res.setHeader('Content-Type', 'text/plain');
+      res.statusCode = 200;
       res.write('This is the list of our students\n');
       res.end(result);
     } catch (error) {
